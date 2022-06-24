@@ -1,0 +1,59 @@
+@import "./styles.scss";
+
+.header {
+    padding: 1.75rem 1.25rem;
+
+    @include breakpoint-up(large) {
+        padding: 1.75rem 6.5rem;
+    }
+
+    &__buttons {
+        display: none;
+
+        @include breakpoint-up(medium) {
+            display: block;
+        }
+    }
+}
+
+.logo {
+    margin-right: 1.5rem;
+
+    @include breakpoint-up(large) {
+        margin-right: 2.5rem;
+    }
+}
+
+.nav-links > li {
+    display: none;
+
+    @include breakpoint-up(medium) {
+        color: $grayishViolet;
+        display: block;
+        margin-right: 1.5rem;
+
+        &:hover {
+            color: $xdkViolet;
+        }
+    }
+}
+
+.button--none {
+    background: none;
+    color: $grayishViolet;
+    font-weight: bold;
+    margin-right: 0.8rem;
+
+    &:hover {
+        color: $xdkViolet;
+    }
+}
+
+.button--cyan {
+    background-color: $cyan;
+    color: $white;
+
+    &:hover {
+        background-color: $cyanLight;
+    }
+}

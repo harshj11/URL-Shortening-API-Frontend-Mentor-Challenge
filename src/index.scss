@@ -1,3 +1,5 @@
+@import "./scss/styles.scss";
+
 html {
   box-sizing: border-box;
   font-size: 100%;
@@ -18,4 +20,47 @@ body {
 h1, h2, h3, h4, h5, h6, p, a, ul, li {
   margin: 0;
   padding: 0;
+}
+
+a, li {
+  cursor: pointer
+}
+
+li {
+  list-style: none;
+}
+
+button {
+  background: none;
+  background-color: $black;
+  border: none;
+  border-radius: 1rem;
+  cursor: pointer;
+  color: $white;
+  font-family: 'Poppins';
+  padding: 0.4rem 1rem;
+}
+
+.flex {
+  display: flex;
+
+  &-jc-c {
+    justify-content: center;
+  }
+
+  &-jc-sa {
+    justify-content: space-around;
+  }
+
+  &-jc-sb {
+    justify-content: space-between;
+  }
+
+  &-jc-se {
+    justify-content: space-evenly;
+  }
+
+  &-ai-c {
+    align-items: center;
+  }
 }
