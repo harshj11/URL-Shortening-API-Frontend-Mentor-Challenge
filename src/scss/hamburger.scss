@@ -1,0 +1,15 @@
+@import "./styles.scss";
+
+.hamburger > div {
+    background-color: $grayishViolet;
+    height: 0.2rem;
+    width: 1.25rem;
+
+    &:not(:last-child) {
+        margin-bottom: 0.25rem;
+    }
+
+    @include breakpoint-up(medium) {
+        display: none;
+    }
+}
