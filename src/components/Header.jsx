@@ -1,12 +1,20 @@
 import '../scss/header.scss';
 import logo from '../images/logo.svg';
 import { Hamburger } from './Hamburger';
+import { createRef } from 'react';
 
 const Header = () => {
+    const menuRef = createRef();
+    const menuDisplay = (window.innerWidth < 639) ? "d-none" : "";
+    console.log(window.innerWidth)
+    const handleClick = (e) => {
+        menuRef.current.classList.toggle("d-none");
+    }
+
     return (
         <section className="header flex flex-jc-sb flex-ai-c">
             <img className="logo" src={logo} alt="logo" />
-            <div className="flex flex-jc-sb hamburger-content">
+            <div className={`flex flex-jc-sb hamburger-content ${menuDisplay}`} ref={menuRef}>
                 <div className="flex flex-jc-c flex-ai-c">
                     <div className="header__links">
                         <ul className="nav-links flex">
@@ -21,7 +29,7 @@ const Header = () => {
                     <button className="button button--cyan">Sign Up</button>
                 </div>
             </div>
-            <Hamburger />
+            <Hamburger onClick={handleClick}/>
         </section>
     )
 }
