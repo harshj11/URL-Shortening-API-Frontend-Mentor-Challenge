@@ -1,5 +1,12 @@
 @import "./styles.scss";
 
+.hamburger {
+    cursor: pointer;
+    @include breakpoint-up(medium) {
+        display: none;
+    }
+}
+
 .hamburger > div {
     background-color: $grayishViolet;
     height: 0.2rem;
