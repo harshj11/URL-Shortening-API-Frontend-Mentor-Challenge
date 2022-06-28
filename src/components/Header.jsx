@@ -6,7 +6,6 @@ import { createRef } from 'react';
 const Header = () => {
     const menuRef = createRef();
     const menuDisplay = (window.innerWidth < 639) ? "d-none" : "";
-    console.log(window.innerWidth)
     const handleClick = (e) => {
         menuRef.current.classList.toggle("d-none");
     }
