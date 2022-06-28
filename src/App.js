@@ -1,4 +1,5 @@
 import Header from './components/Header';
+import Main from './components/Main';
 
 function App() {
   return (
@@ -6,6 +7,7 @@ function App() {
       <header>
         <Header />
       </header>
+      <Main />
     </div>
   );
 }
