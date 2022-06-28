@@ -43,8 +43,61 @@ button {
   padding: 0.4rem 1rem;
 }
 
+.button {
+    
+  @include breakpoint-up(medium) {
+      font-size: 0.9rem
+  }
+
+  @include breakpoint-up(large) {
+      font-size: 1rem;
+  }
+}
+
+.button--none {
+  background: none;
+  color: $white;
+  margin: 1.5rem 0 1rem;
+
+  &:hover {
+      color: none;
+  }
+
+  @include breakpoint-up(medium) {
+      color: $grayishViolet;
+      margin: 0 0.8rem 0 0;
+
+      &:hover {
+          color: $xdkViolet;
+      }
+  }
+}
+
+.button--cyan {
+  background-color: $cyan;
+  border-radius: 1.25rem;
+  color: $white;
+  padding: 0.65rem 0;
+
+  @include breakpoint-up(medium) {
+      padding: 0.4rem 1rem;
+  } 
+
+  &:hover {
+      background-color: $cyanLight;       
+  }
+}
+
 .flex {
   display: flex;
+
+  &-row {
+    flex-direction: row;
+  }
+
+  &-col {
+    flex-direction: column;
+  }
 
   &-jc-c {
     justify-content: center;
