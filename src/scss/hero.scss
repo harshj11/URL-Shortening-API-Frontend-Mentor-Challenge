@@ -1,15 +1,17 @@
 @import '../scss/styles.scss';
 
 .hero {
+    background-color: $white;
+    padding-bottom: 10rem;
 
     @include breakpoint-up(medium) {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        margin: 2rem 0 2rem 2rem;
+        padding: 2rem 0 6rem 2rem;
     }
 
     @include breakpoint-up(large) {
-        margin: 2rem 0 2rem 9rem;
+        padding: 2rem 0 6rem 9rem;
     }
 
     &__image {
