@@ -16,6 +16,8 @@
     transform: translateY(-50%);
 
     @include breakpoint-up(medium) {
+        background-image: url("../images/bg-shorten-desktop.svg");
+        background-position: 0px;
         flex-direction: row;
         padding: 1.75rem 2.25rem;
     }
