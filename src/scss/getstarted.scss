@@ -1,0 +1,25 @@
+@import './styles.scss';
+
+.get-started {
+    background-color: $darkViolet;
+    background-image: url("../images/bg-boost-mobile.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 6.25rem 1.75rem;
+    text-align: center;
+
+    @include breakpoint-up(medium) {
+        background-image: url("../images/bg-boost-desktop.svg");
+        padding: 2rem 1.75rem;
+    }
+
+    &__header {
+        color: $white;
+        margin-bottom: 1rem;
+    }
+
+    button {
+        border-radius: 2rem;
+        padding: 0.7rem 2rem;
+    }
+}
