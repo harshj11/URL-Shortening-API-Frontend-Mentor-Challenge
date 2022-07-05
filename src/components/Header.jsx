@@ -1,7 +1,9 @@
 import '../scss/header.scss';
-import logo from '../images/logo.svg';
 import { Hamburger } from './Hamburger';
 import { createRef } from 'react';
+import Logo from './Logo';
+
+import logoImage from '../images/logo.svg';
 
 const Header = () => {
     const menuRef = createRef();
@@ -12,7 +14,9 @@ const Header = () => {
 
     return (
         <section className="header flex flex-jc-sb flex-ai-c">
-            <img className="logo" src={logo} alt="logo" />
+            <div className="header__logo flex">
+                <Logo logoImage={logoImage} />
+            </div>
             <div className={`flex flex-jc-sb hamburger-content ${menuDisplay}`} ref={menuRef}>
                 <div className="flex flex-jc-c flex-ai-c">
                     <div className="header__links">
