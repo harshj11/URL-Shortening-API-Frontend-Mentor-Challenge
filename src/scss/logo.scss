@@ -2,9 +2,4 @@
 
 .logo {
     cursor: pointer;
-    margin-right: 1.5rem;
-
-    @include breakpoint-up(large) {
-        margin-right: 2.5rem;
-    }
 }

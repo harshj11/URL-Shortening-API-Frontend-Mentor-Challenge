@@ -1,9 +1,8 @@
-import logo from '../images/logo.svg';
 import '../scss/logo.scss';
 
-const Logo = () => {
+const Logo = (props) => {
     return(
-        <img className="logo" src={logo} alt="logo" />
+        <img className="logo" src={props.logoImage} alt="logo" />
     )
 }
 

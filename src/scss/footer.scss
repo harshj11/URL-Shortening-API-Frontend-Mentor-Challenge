@@ -1,0 +1,89 @@
+@import "../scss/styles.scss";
+
+.footer {
+    background-color: $xdkBlue;
+    color: $grayishViolet;
+    padding: 4rem 0;
+    text-align: center;
+
+    @include breakpoint-up(medium) {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-areas:
+            '. . logo . .'
+            '. features resources company .'
+            '. socials socials socials .';
+    }
+
+    @include breakpoint-up(large) {
+        grid-template-areas: 'logo features resources company socials';
+        padding: 4rem 9rem;
+    }
+
+    &__section {
+        text-align: center;
+
+        ul li {
+            line-height: 2;
+
+            &:hover {
+                color: $cyanLight;
+            }
+        }
+
+        &:not(:last-child) {
+            margin-bottom: 2rem;
+        }
+
+        @include breakpoint-up(large) {
+            margin: 0 auto;
+            text-align: left;
+        }
+    }
+
+    &__logo {
+        grid-area: logo;
+        margin: 0 auto 2rem auto;
+
+        @include breakpoint-up(large) {
+            margin: 0;
+            text-align: left;
+        }
+    }
+
+    &__title {
+        color: $white;
+        margin-bottom: 1rem;
+    }
+
+    &__features {
+        grid-area: features;
+    }
+
+    &__resources {
+        grid-area: resources;
+    }
+
+    &__company {
+        grid-area: company;
+    }
+
+    &__socials {
+        grid-area: socials;
+
+        &__icon {
+            cursor: pointer;
+            display: inline;
+
+            &:not(:last-child) {
+                margin-right: 1.5rem;
+            }
+
+            &:hover {
+                svg path {
+                    fill: $cyanLight;
+                }
+            }
+        }
+    }
+}
