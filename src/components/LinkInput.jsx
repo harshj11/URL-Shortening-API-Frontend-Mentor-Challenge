@@ -1,6 +1,8 @@
 import '../scss/linkinput.scss';
 import { useState, createRef } from 'react';
 
+import LinkShortenContainer from './LinkShortenContainer';
+
 const LinkInput = () => {
 
     const [textValue, setTextValue] = useState("");
@@ -23,21 +25,24 @@ const LinkInput = () => {
         setTextValue(event.target.value);
     }
 
-    return(
-        <div className="link__container flex flex-ai-c">
-            <input 
-                className="link__container__input" 
-                type="text" 
-                placeholder="Shorten a link here..." 
-                onChange={handleChange} 
-                value={textValue}
-                ref={inputRef}
-            />
-            <button className="link__container__button button--cyan" onClick={handleClick}>Shorten It!</button>
-            <span className="link__container__error">
-                <em>{errorText}</em>
-            </span>
-        </div>
+    return (
+        <section className="link">
+            <div className="link__container flex flex-ai-c">
+                <input 
+                    className="link__container__input" 
+                    type="text" 
+                    placeholder="Shorten a link here..." 
+                    onChange={handleChange} 
+                    value={textValue}
+                    ref={inputRef}
+                />
+                <button className="link__container__button button--cyan" onClick={handleClick}>Shorten It!</button>
+                <span className="link__container__error">
+                    <em>{errorText}</em>
+                </span>
+            </div>
+            <LinkShortenContainer />
+        </section>
     )
 }
 
