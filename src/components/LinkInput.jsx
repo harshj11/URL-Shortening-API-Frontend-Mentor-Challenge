@@ -2,6 +2,7 @@ import '../scss/linkinput.scss';
 import { useState, createRef } from 'react';
 
 import LinkShortenContainer from './LinkShortenContainer';
+import axios from 'axios';
 
 const LinkInput = () => {
 
@@ -10,15 +11,29 @@ const LinkInput = () => {
     const inputRef = createRef();
 
     const handleClick = (event) => {
-        if(textValue.trim().length === 0) {
-            inputRef.current.classList.add("focus");
-            setErrorText("Please add a link");
-        } else {
-            if(inputRef.current.classList.contains("focus")) {
-                inputRef.current.classList.remove("focus");
-                setErrorText("");
-            }
-        }
+        axios.get(`https://api.shrtco.de/v2/shorten?url=${textValue}`)
+            .then(response => {
+                console.log(response)
+                if (inputRef.current.classList.contains("focus")) {
+                    inputRef.current.classList.remove("focus");
+                    setErrorText("");
+                }
+            })
+            .catch(err => {
+                const errorData = err.response.data;
+                inputRef.current.classList.add("focus");
+                switch (errorData.error_code) {
+                    case 1: setErrorText("No URL specified!");
+                        break;
+                    case 2: setErrorText("Invalid URL!");
+                        break;
+                    case 3: setErrorText("Wait a second and try again!");
+                        break;
+                    case 10: setErrorText("Link can't be shorten!");
+                        break;
+                    default: setErrorText("Unknown Error, Please try after sometime!");
+                }
+            })
     }
 
     const handleChange = (event) => {
