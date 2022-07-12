@@ -1,13 +1,13 @@
 import "../scss/linkshorten.scss";
 
-const LinkShorten = () => {
+const LinkShorten = ({originalLink, shortenedLink}) => {
     return (
         <div className="link-shorten flex ">
             <div className="link-shorten__original-link">
-                https://www.frontendmentor.io           
+                {originalLink.length > 28 ? originalLink.slice(0, 28) + "..." : originalLink}
             </div>
             <div className="link-shorten__shortened-link">
-                https://rel.ink/gXorPsf9
+                {shortenedLink}
             </div>
             <div className="link-shorten__button">
                 <button className="button button--cyan">Copy</button>
