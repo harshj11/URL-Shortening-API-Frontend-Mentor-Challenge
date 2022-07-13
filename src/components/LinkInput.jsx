@@ -1,5 +1,5 @@
 import '../scss/linkinput.scss';
-import { useState, createRef } from 'react';
+import { useState, useRef } from 'react';
 import axios from 'axios';
 import LinkShorten from './LinkShorten';
 import { Fragment } from 'react';
@@ -8,14 +8,16 @@ const LinkInput = () => {
 
     const [textValue, setTextValue] = useState("");
     const [errorText, setErrorText] = useState("");
+    const [loadingAttributes, setLoadingAttributes] = useState({disabled: false, loading: false});
 
     let localStorageValues = JSON.parse(window.localStorage.getItem('links'));
     if(localStorageValues == null)
         localStorageValues = []
 
     const [recentLinks, setRecentLinks] = useState(localStorageValues);
-    const inputRef = createRef();
+    const inputRef = useRef(null);
     const handleClick = (event) => {
+        setLoadingAttributes({disabled: true, loading: true});
         axios.get(`https://api.shrtco.de/v2/shorten?url=${textValue}`)
             .then(response => {
                 recentLinks.unshift({
@@ -28,6 +30,7 @@ const LinkInput = () => {
                 window.localStorage.setItem('links', JSON.stringify(recentLinks));
                 
                 setRecentLinks([...recentLinks]);
+                setLoadingAttributes({disabled: false, loading: false});
                 
                 if (inputRef.current.classList.contains("focus")) {
                     inputRef.current.classList.remove("focus");
@@ -35,6 +38,7 @@ const LinkInput = () => {
                 }
             })
             .catch(err => {
+                setLoadingAttributes({disabled: false, loading: false});
                 const errorData = err.response.data;
                 inputRef.current.classList.add("focus");
                 switch (errorData.error_code) {
@@ -65,7 +69,13 @@ const LinkInput = () => {
                     value={textValue}
                     ref={inputRef}
                 />
-                <button className="link__container__button button--cyan" onClick={handleClick}>Shorten It!</button>
+                <button 
+                    className="link__container__button button--cyan" 
+                    disabled={loadingAttributes.disabled}
+                    onClick={handleClick}
+                >
+                    {loadingAttributes.loading ? "Loading..." : "Shorten It!"}
+                </button>
                 <span className="link__container__error">
                     <em>{errorText}</em>
                 </span>
