@@ -39,6 +39,7 @@ const LinkInput = () => {
             })
             .catch(err => {
                 setLoadingAttributes({disabled: false, loading: false});
+                console.log(err)
                 const errorData = err.response.data;
                 inputRef.current.classList.add("focus");
                 switch (errorData.error_code) {
@@ -69,6 +70,9 @@ const LinkInput = () => {
                     value={textValue}
                     ref={inputRef}
                 />
+                <span className="link__container__error">
+                    <em>{errorText}</em>
+                </span>
                 <button 
                     className="link__container__button button--cyan" 
                     disabled={loadingAttributes.disabled}
@@ -76,9 +80,7 @@ const LinkInput = () => {
                 >
                     {loadingAttributes.loading ? "Loading..." : "Shorten It!"}
                 </button>
-                <span className="link__container__error">
-                    <em>{errorText}</em>
-                </span>
+                
             </div>
             
             <div className="link-shorten-container">
